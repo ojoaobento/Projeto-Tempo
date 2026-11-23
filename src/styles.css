@@ -357,7 +357,6 @@ main{
     width: 45%;
     flex-direction: column;
     display: flex;
-    flex-wrap: wrap;
     gap: 15px;
     margin-left: 8%;
 
@@ -367,7 +366,6 @@ main{
     background-color: rgb(255, 253, 253);
     border: 1px solid #e7f3ff;
     border-radius: 15px;
-    height: 55%;
     padding: 10px;
 
 }
@@ -390,7 +388,7 @@ main{
 .status{
     display: flex;
     background-color: green;
-    width: 12%;
+    padding: 0px 10px;
     height: 2em;
     justify-content: center;
     align-items: center;
@@ -412,6 +410,12 @@ main{
     background-color: whitesmoke;
     border: 1px solid whitesmoke;
     border-radius: 5px;
-    width: 50%;
-    height: 50%;
+    width: 30%;
+    padding: 15px;
+}
+
+.mapa-integracao{
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
 }
