@@ -409,9 +409,69 @@ main{
 .mapa{
     background-color: whitesmoke;
     border: 1px solid whitesmoke;
-    border-radius: 5px;
-    width: 30%;
-    padding: 15px;
+    border-radius: 50x;
+    width: 50%;
+    height: 50%;
+}
+
+.mapa-topo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #808080;
+}
+
+.mapa-topo > h2{
+    font-size: 1em;
+}
+
+.mapa-topo > p{
+    font-size: 0.8em;
+    color: #808080;
+}
+
+.mapa-regioes{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mapa-linha{
+    display: flex;
+    justify-content: center;
+}
+
+.mapa-linha > .regiao{
+    width: 75%;
+    height: 55px;
+}
+
+.mapa-meio{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.mapa-meio > .regiao{
+    width: 32%;
+    height: 55px;
+}
+
+.regiao{
+    background-color: #0b1e36;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.regiao:hover{
+    background-color: #05101d;
 }
 
 .mapa-integracao{
