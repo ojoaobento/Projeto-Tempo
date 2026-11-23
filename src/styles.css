@@ -260,3 +260,158 @@ header{
 .card-defesa:hover .icones-cards-phone{
     transform: translateX(5px);
 }
+
+
+main{
+    margin-top: 5%;
+}
+
+.icone-temporal{
+    font-family: 'Material Symbols Outlined';
+    font-size: 30px; 
+    color: rgb(16, 119, 255);   
+}
+
+.temporal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.horario{
+    margin-left: 40em;
+}
+
+.icone-warning-main{
+    font-family: 'Material Symbols Outlined';
+    font-size: 25px; 
+    color: #775b15;
+    margin-left: 3%;
+}
+
+.linha-main{
+    background-color:#808080;
+    width: 85%;
+    height: 1px;
+    border: none;
+    margin-left: 8%;
+    margin-top: 2%;
+
+}
+
+.container-alerta{
+    background-color: rgba(255, 208, 0, 0.1);
+    border: 1px solid rgb(255, 229, 115);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    width: 85%;
+    height: 80px;
+    margin-left: 8%;
+    margin-top: 2%;
+    gap: 20px;
+    padding: 0px 20px;
+}
+
+.container-alerta > h1{
+    font-size: 1em;
+    margin: 0;
+    flex: 1;
+}
+
+.localizacao{
+    color: white;
+    font-size: 0.8em;
+    font-weight: bold;
+    background-color: #0b1e36;
+    margin-right: 5%;
+    border-radius: 5px;
+    display: flex;
+    gap: 10px;
+    padding: 0px 15px;
+    width: 25%;
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.icone-location{
+    font-family: 'Material Symbols Outlined';
+    font-size: 20px;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.localizacao:hover .icone-location{
+    transform: scale(1.1);
+}
+
+.localizacao:hover{
+    background-color: #024686
+}
+
+.container-lista{
+    margin-top: 4%;
+    width: 45%;
+    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-left: 8%;
+
+}
+
+.container-lista > div{
+    background-color: rgb(255, 253, 253);
+    border: 1px solid #e7f3ff;
+    border-radius: 15px;
+    height: 55%;
+    padding: 10px;
+
+}
+
+.card-lista{
+    flex-direction: column;
+    display: flex;
+}
+
+.card-lista-dentro{
+    display: flex;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.card-lista-dentro > h1{
+    font-size: 1.2em;
+}
+
+.status{
+    display: flex;
+    background-color: green;
+    width: 12%;
+    height: 2em;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 30px;
+}
+
+.status > p{
+    font-size: 0.6em;
+    font-weight: bold;
+}
+
+.subtitulo{
+    font-size: 0.8em;
+    color: #808080;
+}
+
+.mapa{
+    background-color: whitesmoke;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    width: 50%;
+    height: 50%;
+}
