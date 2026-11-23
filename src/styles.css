@@ -409,6 +409,7 @@ main{
 .mapa{
     background-color: whitesmoke;
     border: 1px solid whitesmoke;
+<<<<<<< Updated upstream
     border-radius: 50x;
     width: 50%;
     height: 50%;
@@ -478,4 +479,13 @@ main{
     display: flex;
     gap: 20px;
     align-items: flex-start;
+=======
+    border-radius: 5px;
+    width: 30%;
+    height: 30%;
+}
+
+.mapa-integracao{
+    display: flex;
+>>>>>>> Stashed changes
 }
