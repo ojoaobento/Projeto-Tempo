@@ -2,204 +2,106 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Veja onde está o temporal em Maringá e como pedir ajuda.">
     <title>Paraná Preparado</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav>
-        <div class="parana">
-            <div class="shield-nav">
-                <span class="icone-shield">
-                    shield
+        <div class="container nav-in">
+            <a class="logo" href="#">
+                <span class="shield-nav"><span class="ic material-symbols-outlined" aria-hidden="true">shield</span></span>
+                <span class="logo-nome">Paraná Preparado</span>
+            </a>
+            <div class="nav-dir">
+                <span id="status-nav" class="pill-nav neutro">
+                    <span class="ic material-symbols-outlined" aria-hidden="true">warning</span>
+                    <span id="status-nav-txt">Maringá</span>
                 </span>
-            </div>
-            <h1>
-                Paraná Preparado
-            </h1>
-        </div>
-        <div class="bloco-nav">
-            <div class="maringa">
-                <span class="icone-warning">
-                    warning
-                </span>
-                <p>
-                    Maringá: Atenção
-                </p>
-            </div>
-            <div class="ligar">
-                <span class="icone-ligar">
-                    phone
-                </span>
-                <h1>
+                <a class="ligar" href="tel:199">
+                    <span class="ic material-symbols-outlined" aria-hidden="true">phone</span>
                     Ligar 199
-                </h1>
+                </a>
             </div>
         </div>
     </nav>
 
-    <hr class="linha">
-
-    <header>
-        
-        <div>
-            <div class="ajuda">
-
-                <span class="icone-emergencia ">emergency</span>
-
-                <h1>
-                    Precisa de Ajuda?
-                </h1>
-            </div>
-
-
-            <div class="cards">
-
-
-                <div class="card-defesa">
-                    <div class="cards-dentro-defesa">
-                        <span class="icones-cards">shield</span>
-                        <p>Defesa Civil</p>
-                        <span class="icones-cards-phone">phone</span>
-                    </div>
-                    <p class="telefone">199</p>
-                </div>
-
-                <div class="card">
-                    <div class="cards-dentro">
-                        <span class="icones-cards">local_fire_department</span>
-                        <p>Bombeiros</p>
-                        <span class="icones-cards-phone">phone</span>
-                    </div>
-                    <p class="telefone">193</p>
-                </div>
-
-                <div class="card">
-                    <div class="cards-dentro-samu">
-                        <span class="icones-cards">medical_services</span>
-                        <p>Samu</p>
-                        <span class="icones-cards-phone">phone</span>
-                    </div>
-                    <p class="telefone">192</p>
-                </div>
-
-                <div class="card">
-                    <div class="cards-dentro">
-                        <span class="icones-cards">local_police</span>
-                        <p>Polícia Militar</p>
-                        <span class="icones-cards-phone">phone</span>
-                    </div>
-                    <p class="telefone">190</p>
-                </div>
-            </div>
-
+    <header class="container">
+        <h2 class="titulo"><span class="ic material-symbols-outlined vermelho" aria-hidden="true">emergency</span> Precisa de ajuda?</h2>
+        <div class="telefones">
+            <a class="tel tel-defesa" href="tel:199">
+                <span class="tel-topo"><span class="ic material-symbols-outlined" aria-hidden="true">shield</span> Defesa Civil <span class="ic material-symbols-outlined fone" aria-hidden="true">phone</span></span>
+                <strong>199</strong>
+            </a>
+            <a class="tel" href="tel:193">
+                <span class="tel-topo"><span class="ic material-symbols-outlined" aria-hidden="true">local_fire_department</span> Bombeiros <span class="ic material-symbols-outlined fone" aria-hidden="true">phone</span></span>
+                <strong>193</strong>
+            </a>
+            <a class="tel" href="tel:192">
+                <span class="tel-topo"><span class="ic material-symbols-outlined" aria-hidden="true">medical_services</span> SAMU <span class="ic material-symbols-outlined fone" aria-hidden="true">phone</span></span>
+                <strong>192</strong>
+            </a>
+            <a class="tel" href="tel:190">
+                <span class="tel-topo"><span class="ic material-symbols-outlined" aria-hidden="true">local_police</span> Polícia Militar <span class="ic material-symbols-outlined fone" aria-hidden="true">phone</span></span>
+                <strong>190</strong>
+            </a>
         </div>
-
     </header>
 
-    <main>
+    <main class="container">
         <div class="temporal">
-            <span class="icone-temporal"> thunderstorm</span>
-            <h1>Onde está o temporal agora</h1>
-            <span class="horario">14:32</span>
+            <h2 class="titulo"><span class="ic material-symbols-outlined azul" aria-hidden="true">thunderstorm</span> Onde está o temporal agora</h2>
+            <span id="hora" class="horario"></span>
         </div>
 
-        <hr class="linha-main">
-
-        <div class="container-alerta">
-            <span class="icone-warning-main">warning</span>
-            <h1>Alerta Maringá: risco de temporal nas próximas horas.</h1>
-            <div class="localizacao">
-                <span class="icone-location">my_location</span>
-                <p>Usar minha localização</p>
-            </div>
+        <div id="alerta" class="alerta-cidade neutro">
+            <span class="ic material-symbols-outlined" aria-hidden="true">warning</span>
+            <p id="alerta-txt">Carregando a previsão...</p>
+            <button id="btn-local" class="localizacao" type="button">
+                <span class="ic material-symbols-outlined" aria-hidden="true">my_location</span>
+                Usar minha localização
+            </button>
         </div>
-
 
         <div class="mapa-integracao">
-
-
-            <div class="container-lista">
-
-                <div class="card-lista">
-                    <div class="card-lista-dentro">
-                        <h1>Região Norte</h1>
-                        <div class="status"><p>PERIGO</p></div>
-                    </div>
-                    <span class="subtitulo">Chuva: Muito Forte - Vento Muito Forte</span>
-                </div>
-
-                <div class="card-lista">
-                    <div class="card-lista-dentro">
-                        <h1>Região Central</h1>
-                        <div class="status"><p>RISCO</p></div>
-                    </div>
-                    <span class="subtitulo">Chuva: Muito Forte - Vento Muito Forte</span>
-                </div>
-
-                <div class="card-lista">
-                    <div class="card-lista-dentro">
-                        <h1>Região Leste</h1>
-                        <div class="status"><p>ATENÇÃO</p></div>
-                    </div>
-                    <span class="subtitulo">Chuva: Muito Forte - Vento Muito Forte</span>
-                </div>
-
-                <div class="card-lista">
-                    <div class="card-lista-dentro">
-                        <h1>Região Oeste</h1>
-                        <div class="status"><p>TRANQUILO</p></div>
-                    </div>
-                    <span class="subtitulo">Chuva: Muito Forte - Vento Muito Forte</span>
-                </div>
-
-                <div class="card-lista">
-                    <div class="card-lista-dentro">
-                        <h1>Região Sul</h1>
-                        <div class="status"><p>TRANQUILO</p></div>
-                    </div>
-                    <span class="subtitulo">Chuva: Muito Forte - Vento Muito Forte</span>
-                </div>
-
-            </div>
-
-
-
-
+            <div id="lista" class="container-lista" aria-live="polite"></div>
 
             <div class="mapa">
-
-                <div class="mapa-topo">
-                    <h2>Mapa das 5 Regiões</h2>
-                    <p>Maringá - PR</p>
+                <div class="mapa-topo"><h3>Mapa das 5 regiões</h3><span>Maringá - PR</span></div>
+                <div id="mapa" class="mapa-regioes">
+                    <button class="regiao neutro" data-r="norte" style="grid-column:1/4">Norte</button>
+                    <button class="regiao neutro" data-r="oeste">Oeste</button>
+                    <button class="regiao neutro" data-r="centro">Centro</button>
+                    <button class="regiao neutro" data-r="leste">Leste</button>
+                    <button class="regiao neutro" data-r="sul" style="grid-column:1/4">Sul</button>
                 </div>
-
-                
-                <div class="mapa-regioes">
-                    <div class="mapa-linha">
-                        <div class="regiao"><p>NORTE</p></div>
-                    </div>
-
-                    <div class="mapa-meio">
-                        <div class="regiao"><p>OESTE</p></div>
-                        <div class="regiao"><p>CENTRO</p></div>
-                        <div class="regiao"><p>LESTE</p></div>
-                    </div>
-
-                    <div class="mapa-linha">
-                        <div class="regiao"><p>SUL</p></div>
-                    </div>
-                </div>
-
-
             </div>
-
-
-
         </div>
 
+        <p class="aviso">Previsão automática. Não confirma alagamentos ou danos. Em emergência, ligue 199 ou 193.</p>
+
+        <section>
+            <h2 class="titulo-dicas">Dicas de autoproteção</h2>
+            <div class="card-dicas">
+                <div><span class="ic material-symbols-outlined" aria-hidden="true">roofing</span><p>Fique em cômodo sem janelas, no piso mais baixo.</p></div>
+                <div><span class="ic material-symbols-outlined" aria-hidden="true">flood</span><p>Nunca tente atravessar água a pé ou de carro.</p></div>
+                <div><span class="ic material-symbols-outlined" aria-hidden="true">air</span><p>Afaste-se de árvores, postes e fios caídos.</p></div>
+                <div><span class="ic material-symbols-outlined" aria-hidden="true">bolt</span><p>Evite campos abertos e estruturas metálicas.</p></div>
+            </div>
+        </section>
+
+        <a id="zap" class="compartilhar" target="_blank" rel="noopener" href="https://wa.me/">
+            <span class="ic material-symbols-outlined" aria-hidden="true">share</span>
+            Compartilhar no WhatsApp
+        </a>
     </main>
-    
+
+    <footer class="rodape"><p>Guia informativo de segurança contra temporais.</p></footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
