@@ -1,4 +1,3 @@
-
 const BAIRROS = [
   // Norte
   { n: 'Jardim Alvorada',     r: 'norte',  lat: -23.3900, lon: -51.9420 },
@@ -25,7 +24,7 @@ const REGIOES = { norte: 'Região Norte', centro: 'Região Central', leste: 'Reg
 const ROTULO = ['Tranquilo', 'Atenção', 'Risco', 'Perigo'];
 const CLASSE = ['tranquilo', 'atencao', 'risco', 'perigo'];
 const CIDADE = [
-  'Tranquilo: sem risco de temporal agora.',
+  'Tranquilo: sem risco previsto pelo modelo. Temporais localizados podem não aparecer.',
   'Atenção: possibilidade de chuva forte.',
   'Risco de temporal: evite sair e fique atento.',
   'Perigo: procure abrigo seguro agora.'
@@ -33,21 +32,32 @@ const CIDADE = [
 const ACAO = ['', 'Fique atento ao tempo.', 'Evite sair e afaste-se de janelas.', 'Procure abrigo seguro agora.'];
 const ATUALIZAR_MIN = 10;
 
+/* Janela de análise (em horas) */
+const HORAS_FUTURO = 6;   // quantas horas à frente olhar
+const HORAS_PASSADO = 2;  // quantas horas atrás olhar (chuva que acabou de cair)
+
 /* ===== REGRAS DE NÍVEL (ajuste os limites se quiser) ===== */
 const chuvaTxt = mm => mm < 0.1 ? 'Sem chuva' : mm < 2.5 ? 'Fraca' : mm < 7.6 ? 'Moderada' : mm < 20 ? 'Forte' : 'Muito forte';
 const ventoTxt = kmh => kmh < 40 ? 'Fraco' : kmh < 60 ? 'Forte' : 'Muito forte';
 const tempTxt = ['Baixa', 'Média', 'Alta'];
 
+const maximo = arr => Math.max(0, ...(arr || []).map(v => v || 0));
+
 function analisar(p) {
   const c = p.current, h = p.hourly;
-  const chuva = c.precipitation || 0, vento = c.wind_gusts_10m || 0;
-  const prob = Math.max(...h.precipitation_probability.map(v => v || 0));
-  const cape = Math.max(...h.cape.map(v => v || 0));
-  const trovoada = c.weather_code >= 95;
+
+  // pior caso da janela (passado recente + agora + próximas horas)
+  const chuva = Math.max(c.precipitation || 0, maximo(h.precipitation));
+  const vento = Math.max(c.wind_gusts_10m || 0, maximo(h.wind_gusts_10m));
+  const prob = maximo(h.precipitation_probability);
+  const cape = maximo(h.cape);
+  const trovoada = (c.weather_code >= 95) || (h.weather_code || []).some(v => v >= 95);
+
   let nivel = 0;
-  if (chuva >= 2.5 || vento >= 40 || prob >= 60) nivel = 1;
-  if (chuva >= 7.6 || vento >= 60 || trovoada) nivel = 2;
+  if (chuva >= 2.5 || vento >= 40 || prob >= 50 || cape >= 1000) nivel = 1;
+  if (chuva >= 7.6 || vento >= 60 || trovoada || (cape >= 1500 && prob >= 50)) nivel = 2;
   if (chuva >= 20 || vento >= 75 || (trovoada && chuva >= 7.6)) nivel = 3;
+
   const chance = trovoada || (cape >= 1500 && prob >= 50) ? 2 : (cape >= 800 && prob >= 40) ? 1 : 0;
   return { nivel, chuva, vento, chance };
 }
@@ -71,7 +81,9 @@ async function carregar() {
       + '?latitude=' + BAIRROS.map(b => b.lat).join(',')
       + '&longitude=' + BAIRROS.map(b => b.lon).join(',')
       + '&current=precipitation,wind_gusts_10m,weather_code'
-      + '&hourly=precipitation_probability,cape&forecast_hours=3'
+      + '&hourly=precipitation,precipitation_probability,wind_gusts_10m,cape,weather_code'
+      + '&past_hours=' + HORAS_PASSADO
+      + '&forecast_hours=' + HORAS_FUTURO
       + '&wind_speed_unit=kmh&timezone=America%2FSao_Paulo';
     const res = await fetch(url);
     if (!res.ok) throw new Error('HTTP ' + res.status);
